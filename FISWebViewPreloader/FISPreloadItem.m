@@ -19,7 +19,7 @@
     return self;
 }
 
-- (UIWebView *)webView
+- (WKWebView *)webView
 {
     if (!_webView) {
         [self loadWebView];
@@ -33,10 +33,8 @@
 
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
 
-    _webView= [[UIWebView alloc] initWithFrame:self.cgRect];
+    _webView= [[WKWebView alloc] initWithFrame:self.cgRect];
     [_webView loadRequest:request];
-    _webView.scalesPageToFit = YES;
-
 }
 
 - (void)unloadWebView

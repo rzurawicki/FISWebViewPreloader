@@ -14,6 +14,7 @@
 		6E777865183A94BC00482C47 /* FISWebViewPreloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E777864183A94BC00482C47 /* FISWebViewPreloader.m */; };
 		6E77786B183AAD3B00482C47 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E77786A183AAD3B00482C47 /* UIKit.framework */; };
 		6E77786D183AAD4400482C47 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E77786C183AAD4400482C47 /* Foundation.framework */; };
+		DB3B9F331A22512500127C72 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B9F321A22512500127C72 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		6E777864183A94BC00482C47 /* FISWebViewPreloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FISWebViewPreloader.m; path = ../../FISWebViewPreloader/FISWebViewPreloader.m; sourceTree = "<group>"; };
 		6E77786A183AAD3B00482C47 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		6E77786C183AAD4400482C47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		DB3B9F321A22512500127C72 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.1.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB3B9F331A22512500127C72 /* WebKit.framework in Frameworks */,
 				6E77786D183AAD4400482C47 /* Foundation.framework in Frameworks */,
 				6E77786B183AAD3B00482C47 /* UIKit.framework in Frameworks */,
 				6E777852183A944600482C47 /* XCTest.framework in Frameworks */,
@@ -65,6 +68,7 @@
 		6E777850183A944600482C47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB3B9F321A22512500127C72 /* WebKit.framework */,
 				6E77786C183AAD4400482C47 /* Foundation.framework */,
 				6E77786A183AAD3B00482C47 /* UIKit.framework */,
 				6E777851183A944600482C47 /* XCTest.framework */,
@@ -121,7 +125,7 @@
 		6E777844183A941400482C47 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = 6E777847183A941400482C47 /* Build configuration list for PBXProject "FISWebViewPreloaderTests" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -179,12 +183,15 @@
 		6E777848183A941400482C47 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
 		6E777849183A941400482C47 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 			};
 			name = Release;
 		};
@@ -192,7 +199,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -242,7 +248,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";

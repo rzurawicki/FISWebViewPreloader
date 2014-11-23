@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "FISWebViewPreloader.h"
 
-@interface PresentingViewController : UIViewController <UIWebViewDelegate>
+@interface PresentingViewController : UIViewController <WKWebViewDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UIView *containerView;

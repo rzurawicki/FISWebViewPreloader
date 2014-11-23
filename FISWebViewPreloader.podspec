@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = "FISWebViewPreloader"
   s.version      = "0.1"
-  s.summary      = "Preloading UIWebviews in UIViewControllers for faster loadtime."
+  s.summary      = "Preloading WKWebViews in UIViewControllers for faster loadtime."
   s.homepage     = "https://github.com/jameslin101/FISWebViewPreloader"
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }

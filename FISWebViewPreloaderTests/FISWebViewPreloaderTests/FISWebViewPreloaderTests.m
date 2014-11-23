@@ -44,7 +44,7 @@
 {
     [self helperSetURLString];
     dispatch_async(dispatch_get_main_queue(), ^{
-        XCTAssertTrue([[self.preloader webViewForKey:@"google"] isMemberOfClass:[UIWebView class]], @"webViewForKey did not returns an instance of WebView");
+        XCTAssertTrue([[self.preloader webViewForKey:@"google"] isMemberOfClass:[WKWebView class]], @"webViewForKey did not returns an instance of WebView");
     });
 }
 

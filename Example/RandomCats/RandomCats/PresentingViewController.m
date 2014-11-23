@@ -13,7 +13,7 @@
 @interface PresentingViewController ()
 
 @property (strong,nonatomic) FISWebViewPreloader *preloader;
-@property (strong,nonatomic) UIWebView *randomWebView;
+@property (strong,nonatomic) WKWebView *randomWebView;
 @end
 
 @implementation PresentingViewController
@@ -41,7 +41,7 @@
 - (IBAction)startLoadingButtonPressed:(id)sender {
     
     
-    //Creating a Preloader with capacity of 5 UIWebViews.
+    //Creating a Preloader with capacity of 5 WKWebViews.
     self.preloader = [[FISWebViewPreloader alloc] initWithCapacity:5 scheduleType:FIFO];
     
     for(NSInteger i = 0; i<15; i++)
@@ -72,7 +72,7 @@
     
     CGRect cgRect = CGRectMake(0,0,self.containerView.frame.size.width, self.containerView.frame.size.height);
     
-    UIWebView *webView = [self.preloader setURLString:randomURL
+    WKWebView *webView = [self.preloader setURLString:randomURL
                                                forKey:[NSNumber numberWithInt:i]
                                            withCGRect:cgRect];
     
@@ -88,14 +88,14 @@
     
 }
 
-#pragma mark UIWebViewDelegate methods
+#pragma mark WKWebViewDelegate methods
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
+- (void)webViewDidStartLoad:(WKWebView *)webView
 {
     NSLog(@"Started loading %@", webView.request.URL);
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webViewDidFinishLoad:(WKWebView *)webView
 {
     NSLog(@"Finished loading %@", webView.request.URL);
 }

@@ -1,5 +1,5 @@
 #FISWebViewPreloader 
-`FISWebViewPreloader` is Cocoapod which helps loading `UIWebView` objects in the background so they can be presented without delays.
+`FISWebViewPreloader` is Cocoapod which helps loading `WKWebView` objects in the background so they can be presented without delays.
 
 ---
 ##Installing FISWebViewPreloader
@@ -10,7 +10,7 @@ pod 'FISWebViewPreloader'
 ```
 
 ---
-##Using FISWebViewPreloader to create pre-loaded `UIWebView` objects 
+##Using FISWebViewPreloader to create pre-loaded `WKWebView` objects 
 Using `FISWebViewPreloader` is very easy. We recommend creating a private variable to use `FISWebViewPreloader`:
 
 ```Objective-C
@@ -21,7 +21,7 @@ Using `FISWebViewPreloader` is very easy. We recommend creating a private variab
 self.preloader = [FISWebViewPreloader new];
 ```
 
-Any time you need to create a pre-loaded `UIWebView` object, you can add your URL string to `FISWebViewPreloader`'s dictionary. 
+Any time you need to create a pre-loaded `WKWebView` object, you can add your URL string to `FISWebViewPreloader`'s dictionary. 
 
 ```Objective-C
 [self.preloader setURLString:@"http://www.google.com" forKey:@"Google"];
@@ -36,32 +36,32 @@ If you need to scale the web pages to fit a certain frame, you can pass the Widt
 ```
 ---
 ##Adding Capacity constraint with scheduling
-If you are concerned about FISWebViewPreloader to take too much memory, you can define a capacity for the number of `UIWebView`s to be created and pre-loaded. 
+If you are concerned about FISWebViewPreloader to take too much memory, you can define a capacity for the number of `WKWebView`s to be created and pre-loaded. 
 
 ```Objective-C
 self.preloader = [[FISWebViewPreloader alloc] initWithCapacity:5 scheduleType:FIFO];
 ```
 
-This will make sure that if more than 5 `UIWebView`s are added, older `UIWebView`s will be removed based on your specified `ScheduleType` (LIFO or FIFO). If you try to access an already-dequeued `UIWebView`, the requested `UIWebView` will be re-created on the fly.
+This will make sure that if more than 5 `WKWebView`s are added, older `WKWebView`s will be removed based on your specified `ScheduleType` (LIFO or FIFO). If you try to access an already-dequeued `WKWebView`, the requested `WKWebView` will be re-created on the fly.
 
-Whenever you access a UIWebView object it will automatically be placed at the head of the priorityQueue.
+Whenever you access a WKWebView object it will automatically be placed at the head of the priorityQueue.
 
 ---
-##Accessing your pre-loaded `UIWebView` objects 
+##Accessing your pre-loaded `WKWebView` objects 
 
-There are two ways of accessing the pre-loaded `UIWebView` objects. You can either retrieve your `UIWebView` object at the time of their creation: 
+There are two ways of accessing the pre-loaded `WKWebView` objects. You can either retrieve your `WKWebView` object at the time of their creation: 
 
 ```Objective-C
-UIWebView *googleWebView = [self.preloader setURLString:@"http://www.google.com" forKey:@"Google"];
+WKWebView *googleWebView = [self.preloader setURLString:@"http://www.google.com" forKey:@"Google"];
 ```
 
 Alternatively, you can use `FISWebViewPreloader`'s `webViewForKey:` method: 
 
 ```Objective-C
-UIWebView *googleWebView = [self.preloader webViewForKey:@"Google"];
+WKWebView *googleWebView = [self.preloader webViewForKey:@"Google"];
 ````
 
-You can use the following method to access the key for a given `UIWebView`: 
+You can use the following method to access the key for a given `WKWebView`: 
 
 ```Objective-C
 NSString *myKey = [self.preloader keyForWebView:googleWebView];
@@ -69,34 +69,34 @@ NSString *myKey = [self.preloader keyForWebView:googleWebView];
 ```
 
 ---
-##`UIWebViewDelegate` Protocol: 
+##`WKWebViewDelegate` Protocol: 
 
-If your View Controller adheres to the `UIWebViewDelegate` protocol, then you can use a similar pattern to below to access delegate methods:
+If your View Controller adheres to the `WKWebViewDelegate` protocol, then you can use a similar pattern to below to access delegate methods:
 
 ```Objective-C
 
 -(void)createWebViews
 {
-    UIWebView *googleWebView = [self.preloader setURLString:@"http://www.google.com" forKey:@"Google"];
+    WKWebView *googleWebView = [self.preloader setURLString:@"http://www.google.com" forKey:@"Google"];
     googleWebView.delegate = self;
 }
 
-#pragma mark UIWebViewDelegate methods
+#pragma mark WKWebViewDelegate methods
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
+- (void)webViewDidStartLoad:(WKWebView *)webView {
     NSLog(@"Started loading %@", [self.preloader keyForWebView:webView]);
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
+- (void)webViewDidFinishLoad:(WKWebView *)webView {
     NSLog(@"Finished loading %@", [self.preloader keyForWebView:webView]);
 }
 ```
 
 
 ---
-##Removing pre-loaded `UIWebView` objects
+##Removing pre-loaded `WKWebView` objects
 
-You can call the `removeWebViewForKey:` method to stop the destroy any `UIWebView` objects that you no longer need: 
+You can call the `removeWebViewForKey:` method to stop the destroy any `WKWebView` objects that you no longer need: 
 
 ```Objective-C
 [self.preloader removeWebViewForKey:@"Google"];

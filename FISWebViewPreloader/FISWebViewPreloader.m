@@ -33,7 +33,7 @@
     return self;
 }
 
-- (UIWebView *)setURLString:(NSString *)aURLString forKey:(id<NSCopying>)aKey withCGRect:(CGRect)cgRect
+- (WKWebView *)setURLString:(NSString *)aURLString forKey:(id<NSCopying>)aKey withCGRect:(CGRect)cgRect
 {
     if ([[self allKeys] count] >= self.capacity) {
         [self unloadWebViewForKey:[self.priorityQueue lastObject]];
@@ -52,12 +52,12 @@
     return [preloadItem webView];
 }
 
-- (UIWebView *)setURLString:(NSString *)aURLString forKey:(id<NSCopying>)aKey
+- (WKWebView *)setURLString:(NSString *)aURLString forKey:(id<NSCopying>)aKey
 {
     return [self setURLString:aURLString forKey:aKey withCGRect:CGRectNull];
 }
 
-- (UIWebView *)webViewForKey:(id<NSCopying>)aKey
+- (WKWebView *)webViewForKey:(id<NSCopying>)aKey
 {
     //Move object to front of priority queue if accessed
     [self.priorityQueue removeObject:aKey];
