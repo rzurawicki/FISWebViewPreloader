@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "FISWebViewPreloader"
-  s.version      = "0.2"
+  s.version      = "1.1"
   s.summary      = "Preloading WKWebViews in UIViewControllers for faster loadtime."
   s.homepage     = "https://github.com/rzurawicki/FISWebViewPreloader"
 
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
 
   s.source       = { :git => "https://github.com/rzurawicki/FISWebViewPreloader.git", 
-                     :tag => "0.2" }
+                     :tag => "1.1" }
 
   s.source_files  = 'FISWebViewPreloader/*.{h,m}'
 
